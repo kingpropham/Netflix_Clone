@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/Details_Page/ep_trailer_bar.dart';
 import 'package:netflix_clone/Details_Page/filminfo.dart';
+import 'package:netflix_clone/constant.dart';
 
 class DetailBody extends StatelessWidget {
   const DetailBody({
@@ -13,6 +14,21 @@ class DetailBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: Container(
+        height: 38,
+        width: 38,
+        margin: EdgeInsets.only(top: 16),
+        child: FloatingActionButton(
+          elevation: 0,
+          backgroundColor: Colors.black.withOpacity(0.75),
+          child: Icon(
+            Icons.close,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -107,6 +123,7 @@ class DetailBody extends StatelessWidget {
                             width: MediaQuery.of(context).size.width - 32,
                             height:
                                 (MediaQuery.of(context).size.width - 32) * 0.6,
+                            margin: EdgeInsets.only(bottom: 16),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(18),
                               image: DecorationImage(
@@ -118,7 +135,46 @@ class DetailBody extends StatelessWidget {
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            //child: Row(),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: 18,
+                                bottom: 18,
+                                left: 16,
+                                right: 16,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(
+                                        'S2:E1',
+                                        style: eptextstyle,
+                                      ),
+                                      Icon(
+                                        Icons.download_rounded,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 87),
+                                  Text(
+                                    'Viking Funeral',
+                                    style: eptextstyle,
+                                  ),
+                                  SizedBox(height: 12),
+                                  Text(
+                                    'Nerves run high as the ladies return to work and meet a new cast member. To boost morale, Ruth takes the gang on a raucous outing to the mall.',
+                                    style: eptextstyle.copyWith(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/bottomnavbar.dart';
+import 'package:netflix_clone/Details_Page/detail_main_page.dart';
+import 'package:netflix_clone/Home/bottomnavbar.dart';
 import 'package:netflix_clone/constant.dart';
 import 'package:netflix_clone/categories.Dart';
 
@@ -37,15 +38,15 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
-                decoration: BoxDecoration(color: Color.fromRGBO(30, 30, 30, 1)),
+                decoration: BoxDecoration(color: Color.fromRGBO(25, 25, 25, 1)),
                 width: double.infinity,
                 child: ListView(
                   scrollDirection: Axis.vertical,
                   children: [
-                    category(0),
-                    category(1),
-                    category(2),
-                    category(3),
+                    category(0, context),
+                    category(1, context),
+                    category(2, context),
+                    category(3, context),
                   ],
                 ),
               ),
@@ -75,7 +76,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Widget category(int index) {
+Widget category(int index, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(top: 16, bottom: 16),
     child: Column(
@@ -98,7 +99,7 @@ Widget category(int index) {
             children: [
               ...(categories[index]['film'] as List<String>).map(
                 (film) {
-                  return listItem(index, film);
+                  return listItem(index, film, context);
                 },
               ),
             ],
@@ -109,9 +110,14 @@ Widget category(int index) {
   );
 }
 
-Widget listItem(int indexcate, String film) {
+Widget listItem(int indexcate, String film, BuildContext context) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DetailBody(img: film)),
+      );
+    },
     child: Container(
       height: 156,
       width: 104,

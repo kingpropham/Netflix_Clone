@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/Details_Page/detail_main_page.dart';
 import 'package:netflix_clone/HomeScreen.dart';
 
 void main() => runApp(MyApp());
@@ -12,10 +11,9 @@ class MyApp extends StatelessWidget {
       title: 'Netflix',
       theme: ThemeData(
         fontFamily: 'Mulish',
-        scaffoldBackgroundColor: Color.fromRGBO(30, 30, 30, 1),
+        scaffoldBackgroundColor: Color.fromRGBO(25, 25, 25, 1),
       ),
-      home: DetailBody(img: 'assets/pictures/Glow.jfif'),
-      //home: HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
